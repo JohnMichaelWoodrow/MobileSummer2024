@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/NavBar';
+//import MovieList from './components/MovieList'
+//import mymovies from './movies.json'
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <NavBar />
     </div>
   );
 }
