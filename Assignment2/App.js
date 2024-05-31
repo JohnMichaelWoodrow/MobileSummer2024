@@ -17,10 +17,10 @@ const handlePlayerPress = () => {
 
 const imageList = [player1img, player2img, player3img];
 
-    console.log(players);
+    console.log(player);
   return (
     <View style={styles.container}>
-      <Player players={players} imageList={imageList} playerIndex={playerIndex} />
+      <Player player={player} imageList={imageList} playerIndex={playerIndex} />
       <Button label={"press"} onPress={handlePlayerPress} />
       <StatusBar style="auto" />
     </View>
