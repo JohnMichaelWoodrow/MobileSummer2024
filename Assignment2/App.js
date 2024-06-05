@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Player from './components/player.js'
 import Button from './components/button.js'
 
+import movies from './assets/player.json'
+
 const player1img = require('./assets/mattthomas.jpg')
 const player2img = require('./assets/yutaw.jpg')
 const player3img = require('./assets/rhj.jpg')
