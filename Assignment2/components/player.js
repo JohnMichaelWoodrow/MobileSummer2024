@@ -3,11 +3,11 @@ import { Image, Text } from 'react-native';
 export default function Player( props ) {
     return (
         <>
-            <Text>{props.player.name}</Text>
+            <Text>{props.players.name}</Text>
             <Image source={props.imageList[props.playerIndex]} />
-            <Text>{props.player.year}</Text>
+            <Text>{props.players.year}</Text>
             {
-                props.player.actors.map( (actor) => {
+                props.players.actors.map( (actor) => {
                     return <Text key={actor}>{actor}</Text>
                 })
             }
