@@ -1,38 +1,27 @@
-import { StyleSheet, View, Pressable, Text } from 'react-native';
+import { Pressable, Text, StyleSheet } from 'react-native';
 
-export default function Button({ label, onPress }) {
+export default function Button(props) {
   return (
-    <View style={styles.buttonContainer}>
-      <Pressable style={styles.button} onPress={onPress}>
-        <Text style={styles.buttonLabel}>{label}</Text>
-      </Pressable>
-    </View>
+    <Pressable style={[styles.button, props.isSelected && styles.selectedButton]} onPress={props.onPress}>
+    <Text style={styles.buttonText}>{props.label}</Text>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  buttonContainer: {
-    width: 320,
-    height: 68,
-    marginHorizontal: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 3,
-    backgroundColor: "#444",
-  },
   button: {
-    borderRadius: 10,
-    width: '100%',
-    height: '100%',
+    backgroundColor: '#fff',
+    borderColor: '#000',
+    borderWidth: 1,
+    padding: 10,
+    margin: 5,
+    width: 50,
     alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
   },
-  buttonIcon: {
-    paddingRight: 8,
+  selectedButton: {
+    backgroundColor: '#ccc',
   },
-  buttonLabel: {
-    color: '#fff',
-    fontSize: 16,
+  buttonText: {
+    fontSize: 18,
   },
 });

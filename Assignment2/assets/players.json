@@ -1,6 +1,17 @@
-{
-  "name": "Matt Thomas",
-  "year": 2020,
-  "actors": ["Arnold", "Linda", "Edward"],
-  "imageIndex": 0
-}
+[
+  {
+    "name": "Matt Thomas",
+    "position": "Shooting Guard",
+    "year": "2019-2020"
+  },
+  {
+    "name": "Yuta Watanabe",
+    "position": "Small Forward",
+    "year": "2020-2022"
+  },
+  {
+    "name": "Rondae Hollis-Jefferson",
+    "position": "Power Forward",
+    "year": "2019-2021"
+  }
+]
