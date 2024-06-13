@@ -1,15 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Player from './components/player.js';
 import Button from './components/button.js';
-
-import players from './assets/players.json';
+import { MovieContext } from '../components/MovieContext';
 
 const player1img = require('./assets/mattthomas.jpg');
 const player2img = require('./assets/yutaw.jpg');
 const player3img = require('./assets/rhj.jpg');
-
+/////////////////////////////////////////////////////////////
 export default function App() {
   const [playerIndex, setPlayerIndex] = useState(0);
 
@@ -49,4 +48,3 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
-
