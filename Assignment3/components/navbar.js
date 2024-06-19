@@ -1,18 +1,29 @@
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { router } from 'expo-router';
+import { useRouter } from 'expo-router';
 import Button from './button';
 
 export default function NavBar() {
-    const handleHome = () => {
-        router.navigate('/');
-    }
-    const handleEdit = () => {
-        router.navigate('/edit');
-    }
-    return (
-        <View style={{ flexDirection:"row", justifyContent:"center"}}>
-            <Button label={"Movie"} onPress = {handleHome} />
-            <Button label={"Edit"} onPress = {handleEdit} />
-        </View>
-    );
+  const router = useRouter();
+
+  const handleHome = () => {
+    router.push('/');
+  };
+  const handleEdit = () => {
+    router.push('/edit');
+  };
+
+  return (
+    <View style={styles.navbar}>
+      <Button label={"Player"} onPress={handleHome} />
+      <Button label={"Edit"} onPress={handleEdit} />
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  navbar: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+});
