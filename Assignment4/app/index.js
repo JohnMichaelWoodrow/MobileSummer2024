@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import { StyleSheet, View, Text, Button as RNButton } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import { Button } from 'react-native-paper';
 import Player from '../components/player';
 import { PlayerContext } from '../components/PlayerContext';
 import { useSQLiteContext } from 'expo-sqlite';
@@ -33,10 +34,14 @@ export default function Home() {
             <Player player={players[playerIndex]} />
             <View style={styles.buttonContainer}>
                 {playerIndex > 0 && (
-                    <RNButton title="Previous" onPress={handlePrevious} />
+                    <Button mode="contained" onPress={handlePrevious}>
+                        Previous
+                    </Button>
                 )}
                 {playerIndex < players.length - 1 && (
-                    <RNButton title="Next" onPress={handleNext} />
+                    <Button mode="contained" onPress={handleNext}>
+                        Next
+                    </Button>
                 )}
             </View>
         </View>
@@ -55,5 +60,4 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
 });
-
 

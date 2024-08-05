@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
+import { StyleSheet, View, Text, TextInput, KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
+import { Button } from 'react-native-paper';
 import { useSQLiteContext } from 'expo-sqlite';
 import { useRouter } from 'expo-router';
 
@@ -21,37 +22,57 @@ export default function AddPlayer() {
     };
 
     return (
-        <View style={styles.container}>
-            <Text>Player Name</Text>
-            <TextInput style={styles.input} onChangeText={setPlayerName} value={playerName} />
-            <Text>Player Age</Text>
-            <TextInput style={styles.input} onChangeText={setPlayerAge} value={playerAge} />
-            <Text>Player Team</Text>
-            <TextInput style={styles.input} onChangeText={setPlayerTeam} value={playerTeam} />
-            <Text>Player Image URL</Text>
-            <TextInput style={styles.input} onChangeText={setPlayerImageURL} value={playerImageURL} />
-            <Text>Player Position</Text>
-            <TextInput style={styles.input} onChangeText={setPlayerPosition} value={playerPosition} />
-            <Text>Player Rating (1-5)</Text>
-            <TextInput style={styles.input} onChangeText={setPlayerRating} value={playerRating} keyboardType='numeric' />
-            <Button title="Add Player" onPress={addPlayer} />
-        </View>
+        <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={styles.keyboardAvoidingView}
+        >
+            <ScrollView contentContainerStyle={styles.container}>
+                <Text style={styles.title}>Player Name</Text>
+                <TextInput style={styles.input} onChangeText={setPlayerName} value={playerName} />
+                <Text style={styles.title}>Player Age</Text>
+                <TextInput style={styles.input} onChangeText={setPlayerAge} value={playerAge} keyboardType='numeric' />
+                <Text style={styles.title}>Player Team</Text>
+                <TextInput style={styles.input} onChangeText={setPlayerTeam} value={playerTeam} />
+                <Text style={styles.title}>Player Image URL</Text>
+                <TextInput style={styles.input} onChangeText={setPlayerImageURL} value={playerImageURL} />
+                <Text style={styles.title}>Player Position</Text>
+                <TextInput style={styles.input} onChangeText={setPlayerPosition} value={playerPosition} />
+                <Text style={styles.title}>Player Rating (1-5)</Text>
+                <TextInput style={styles.input} onChangeText={setPlayerRating} value={playerRating} keyboardType='numeric' />
+                <Button mode="contained" onPress={addPlayer} style={styles.button}>
+                    Add Player
+                </Button>
+            </ScrollView>
+        </KeyboardAvoidingView>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
+    keyboardAvoidingView: {
         flex: 1,
+    },
+    container: {
+        flexGrow: 1,
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
+        backgroundColor: '#fff',
+    },
+    title: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginVertical: 10,
     },
     input: {
         height: 40,
-        width: 200,
-        margin: 2,
+        width: '120%',
         borderWidth: 1,
         padding: 10,
+        borderRadius: 5,
+    },
+    button: {
+        marginTop: 20,
+        width: '150%',
     },
 });
 

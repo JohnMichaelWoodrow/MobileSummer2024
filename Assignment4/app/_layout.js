@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { Provider as PaperProvider } from 'react-native-paper';
 import { Slot } from 'expo-router';
 import { Text, StyleSheet, View } from 'react-native';
 import NavBar from '../components/navbar';
@@ -6,15 +8,17 @@ import { PlayerProvider } from '../components/PlayerContext';
 
 export default function HomeLayout() {
     return (
-        <View style={styles.container}>
-            <SQLiteProvider databaseName="players.db" onInit={initializeDB}>
-                <Text style={styles.titleText}>{"Top Raptors Bench Players"}</Text>
-                <NavBar />
-                <PlayerProvider>
-                    <Slot />
-                </PlayerProvider>
-            </SQLiteProvider>
-        </View>
+        <PaperProvider>
+            <View style={styles.container}>
+                <SQLiteProvider databaseName="players.db" onInit={initializeDB}>
+                    <Text style={styles.titleText}>{"Top Raptors Bench Players"}</Text>
+                    <NavBar />
+                    <PlayerProvider>
+                        <Slot />
+                    </PlayerProvider>
+                </SQLiteProvider>
+            </View>
+        </PaperProvider>
     );
 }
 
@@ -28,7 +32,6 @@ async function initializeDB(db) {
     console.log("Initializing database...");
     await db.execAsync(`
         PRAGMA journal_mode = 'wal';
-        DROP TABLE IF EXISTS players;
         CREATE TABLE IF NOT EXISTS players (
             name TEXT PRIMARY KEY NOT NULL,
             age INT NOT NULL,
@@ -63,7 +66,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         textAlignVertical: 'top',
-        marginBottom: 30,
+        marginBottom: 20,
+        marginTop:-50,
     },
 });
-
